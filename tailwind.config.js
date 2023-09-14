@@ -6,6 +6,13 @@ export default {
   ],
   theme: {
     extend: {},
+    theme: {
+      listStyleType: {
+        
+        decimal: 'decimal',
+        
+      }
+    }
   },
   plugins: [require("daisyui")],
 }

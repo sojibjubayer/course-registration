@@ -1,12 +1,12 @@
 
 
-const Card = ({ courses }) => {
-    console.log(courses)
+const Card = ({ courses,handleCourses }) => {
+   
     return (
         <div className="grid grid-cols-3 w-3/4 gap-y-3 mb-20" >
             {
                 courses.map(course =>
-                    <div className="card w-[310px] bg-base-100 ">
+                    <div key={course.id} className="card w-[310px] bg-base-100 ">
                         <figure className="pt-5">
                             <img src={course.image} />
                         </figure>
@@ -18,7 +18,7 @@ const Card = ({ courses }) => {
                                 <p>Credit : {course.credit}hr</p>
                             </div>
 
-                            <button className="btn btn-primary w-64 items-center mx-auto mt-5 text-white font-semibold text-lg ">Select</button>
+                            <button onClick={()=>handleCourses(course)}  className="btn btn-primary w-64 items-center mx-auto mt-5 text-white font-semibold text-lg ">Select</button>
 
                         </div>
                     </div>
