@@ -22,7 +22,10 @@ const Home = () => {
 
     const handleCourses = course=> {
        
-        
+        let count=creditHour+course.credit;
+        setCreditHour(count)
+        let countRemaining=20-count;
+        setRemaining(countRemaining)
         const newcartCourses = [...cartCourses, course]
         setCartCourses(newcartCourses)
     }
