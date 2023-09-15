@@ -9,8 +9,9 @@ import 'react-toastify/dist/ReactToastify.css';
 const Home = () => {
     const [courses, setCourses] = useState([])
     const [cartCourses, setCartCourses] = useState([])
-    const [creditHour,setCreditHour]=useState(0)
-    const [remaining,setRemaining]=useState(20)
+    const [creditHour, setCreditHour] = useState(0)
+    const [remaining, setRemaining] = useState(20)
+
 
     useEffect(() => {
         fetch('./courses.json')
@@ -20,22 +21,22 @@ const Home = () => {
     }, [])
 
 
-  
 
-    const handleCourses = course=> {
-        
-       const newcartCourses = [...cartCourses, course]
-        let count=creditHour+course.credit;
-        let countRemaining=20-count;
+
+    const handleCourses = course => {
+
+        const newcartCourses = [...cartCourses, course]
+        let count = creditHour + course.credit;
+        let countRemaining = 20 - count;
         const isExist = cartCourses.find(cartCourse => cartCourse.id === course.id)
-        if(isExist){
+        if (isExist) {
             toast.warning("You have already selected this course!");
-            return ;
+            return;
         }
 
-        if(countRemaining<0){
-            toast.warning("Sorry! Remaining credit hour cross the limit.");
-            return ;
+        if (countRemaining < 0) {
+            toast.warning("Sorry! Remaining credit hour crossed the limit.");
+            return;
         }
 
         setRemaining(countRemaining)
@@ -44,34 +45,16 @@ const Home = () => {
 
     }
 
-
     return (
         <div className='w-[95%] mx-auto'>
             <h3 className='text-3xl font-bold text-center p-10'>Course Registration</h3>
-            <div className='flex md:flex-row flex-col'>
-
+            <div className='flex lg:flex-row flex-col'>
                 <Card handleCourses={handleCourses} courses={courses}></Card>
-
-                <div className='w-1/4'>
-                <div className="card w-[300px] bg-base-100 ">
-                    <div className=" p-4 ">
-                        <h2 className="font-bold text-lg mt-4 mb-4 text-[#2F80ED] border-b-2">Credit Hour Remaining: {remaining} hr</h2>
-                        <h2 className="font-bold text-lg mt-4 mb-4  ">Course Name</h2>
-
-                        <Cart cartCourses={cartCourses}></Cart>
-
-                        <p className="border-y-2 mb-3 mt-4">Total Credit Hour :{creditHour}</p>
-                        <p>Total Price :  USD</p>
-                        <ToastContainer />
-
-                    </div>
-                </div>
-                </div>
-
+                <Cart cartCourses={cartCourses} remaining={remaining} creditHour={creditHour}></Cart>
+                <ToastContainer />  
             </div>
-
+            <p className='text-xs  text-center p-5'>Developed by Jubayer Sojib</p>
         </div>
     );
 };
-
 export default Home;

@@ -4,7 +4,7 @@ import frame from '../../assets/frame.svg'
 const Card = ({ courses, handleCourses }) => {
 
     return (
-        <div className="grid grid-cols md:grid-cols-2 lg:grid-cols-3 w-3/4 gap-y-3 mb-20" >
+        <div className="grid grid-cols md:grid-cols-2 lg:grid-cols-3 lg:w-3/4 gap-y-3 mb-20" >
             {
                 courses.map(course =>
                     <div key={course.id} className="card w-[300px] bg-base-100 ">
@@ -21,15 +21,11 @@ const Card = ({ courses, handleCourses }) => {
                                 <p className='ml-1'>Credit : {course.credit}hr</p>
                             </div>
                             <button onClick={() => handleCourses(course)} className=" ml-1 p-2 rounded-xl btn-primary w-64 items-center mx-auto mt-5 text-white font-semibold text-base ">Select</button>
-
                         </div>
                     </div>
                 )
             }
         </div>
-
-
-
     );
 };
 
