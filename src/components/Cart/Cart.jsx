@@ -1,8 +1,6 @@
 
 
 const Cart = ({ cartCourses }) => {
-    
-    console.log(cartCourses)
 
     return (
         <div className="">
@@ -10,15 +8,9 @@ const Cart = ({ cartCourses }) => {
            
                     <ol className="list-decimal  ml-5">
                         {
-                            cartCourses.map(courseName=><li>{courseName.course_name}</li>)
+                            cartCourses.map(courseName=><li key={courseName.id}>{courseName.course_name}</li>)
                         }
-                       
                     </ol>
-                   
-
-        
-
-
         </div>
     );
 };
