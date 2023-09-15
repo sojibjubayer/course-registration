@@ -53,7 +53,7 @@ const Home = () => {
                 <Cart cartCourses={cartCourses} remaining={remaining} creditHour={creditHour}></Cart>
                 <ToastContainer />  
             </div>
-            <p className='text-xs  text-center p-10'>Developed by Jubayer Sojib</p>
+            <p className='text-xs  text-center p-4'>Developed by Jubayer Sojib</p>
         </div>
     );
 };
