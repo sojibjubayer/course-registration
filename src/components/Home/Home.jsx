@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import Card from '../Card/Card';
-import './Home.css'
 import Cart from '../Cart/Cart';
-import React from 'react';
+
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
 
 
 const Home = () => {
@@ -12,6 +12,8 @@ const Home = () => {
     const [cartCourses, setCartCourses] = useState([])
     const [creditHour,setCreditHour]=useState(0)
     const [remaining,setRemaining]=useState(20)
+    // const [ol,setOl]=useState({})
+
 
 
     useEffect(() => {
@@ -25,16 +27,18 @@ const Home = () => {
   
 
     const handleCourses = course=> {
+        // let c=ol+1;
+        
        const newcartCourses = [...cartCourses, course]
         let count=creditHour+course.credit;
         let countRemaining=20-count;
         const isExist = cartCourses.find(cartCourse => cartCourse.id === course.id)
         if(isExist){
-            toast.warning("You already selected this course!");
+            toast.warning("You have already selected this course!");
             return ;
         }
         if(countRemaining<0){
-            toast.warning("Sorry! Credit hour cross the limit.");
+            toast.warning("Sorry! Remaining credit hour cross the limit.");
             return ;
         }
         setRemaining(countRemaining)
@@ -61,7 +65,7 @@ const Home = () => {
                         {
                             cartCourses.map((cartCourse,idx)=><Cart key={idx} cartCourse={cartCourse} ></Cart>)
                         }
-                        <p className="border-y-2 mb-3">Total Credit Hour :{creditHour}</p>
+                        <p className="border-y-2 mb-3 mt-4">Total Credit Hour :{creditHour}</p>
                         <p>Total Price :  USD</p>
                         <ToastContainer />
 
