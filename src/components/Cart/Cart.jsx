@@ -1,15 +1,17 @@
 
 
-const Cart = ({ cartCourse }) => {
+const Cart = ({ cartCourses }) => {
     
-    const {course_name}=cartCourse;
+    console.log(cartCourses)
 
     return (
         <div className="">
 
            
                     <ol className="list-decimal  ml-5">
-                         {course_name}
+                        {
+                            cartCourses.map(courseName=><li>{courseName.course_name}</li>)
+                        }
                        
                     </ol>
                    

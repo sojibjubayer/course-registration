@@ -62,9 +62,10 @@ const Home = () => {
                     <div className=" p-4 ">
                         <h2 className="font-bold text-lg mt-4 mb-4 text-[#2F80ED] border-b-2">Credit Hour Remaining: {remaining} hr</h2>
                         <h2 className="font-bold text-lg mt-4 mb-4  ">Course Name</h2>
-                        {
+                        {/* {
                             cartCourses.map((cartCourse,idx)=><Cart key={idx} cartCourse={cartCourse} ></Cart>)
-                        }
+                        } */}
+                        <Cart cartCourses={cartCourses}></Cart>
                         <p className="border-y-2 mb-3 mt-4">Total Credit Hour :{creditHour}</p>
                         <p>Total Price :  USD</p>
                         <ToastContainer />
